@@ -13,7 +13,7 @@ variable "object_name" {
   description = "name of the object in the bucket. Object has public samples"
 }
 
-variable "source_object_path {
+variable "source_object_path" {
   type        = string
   description = "Source of the object going to bucket s3"
 }
