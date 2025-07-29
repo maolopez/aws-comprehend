@@ -8,10 +8,6 @@ data "aws_region" "current" {}
 
 data "aws_caller_identity" "current" {}
 
-module "s3" {
-  source = "../s3"
-}
-
 resource "aws_iam_role" "comprehend_role" {
   name = var.comprehend_role
   assume_role_policy = jsonencode({
@@ -53,7 +49,6 @@ resource "aws_comprehend_document_classifier" "classifier" {
   language_code        = "en"
   data_access_role_arn = aws_iam_role.comprehend_role.arn
   depends_on = [
-    aws_iam_policy.comprehend_policy,
-    module.s3.aws_s3_object
+    aws_iam_policy.comprehend_policy
   ]
 }
