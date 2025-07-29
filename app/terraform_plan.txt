@@ -1,0 +1,198 @@
+[0m[1mmodule.comprehend.data.aws_region.current: Reading...[0m[0m
+[0m[1mmodule.comprehend.data.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mmodule.comprehend.data.aws_partition.current: Reading...[0m[0m
+[0m[1mmodule.comprehend.data.aws_partition.current: Read complete after 0s [id=aws][0m
+[0m[1mmodule.comprehend.data.aws_region.current: Read complete after 0s [id=us-east-1][0m
+[0m[1mmodule.comprehend.data.aws_caller_identity.current: Read complete after 0s [id=271271282869][0m
+[0m[1mmodule.s3.data.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mmodule.s3.data.aws_partition.current: Reading...[0m[0m
+[0m[1mmodule.s3.data.aws_region.current: Reading...[0m[0m
+[0m[1mmodule.s3.data.aws_partition.current: Read complete after 0s [id=aws][0m
+[0m[1mmodule.s3.data.aws_region.current: Read complete after 0s [id=us-east-1][0m
+[0m[1mmodule.s3.data.aws_caller_identity.current: Read complete after 0s [id=271271282869][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # random_string.suffix[0m will be created
+[0m  [32m+[0m[0m resource "random_string" "suffix" {
+      [32m+[0m[0m id          = (known after apply)
+      [32m+[0m[0m length      = 5
+      [32m+[0m[0m lower       = true
+      [32m+[0m[0m min_lower   = 0
+      [32m+[0m[0m min_numeric = 0
+      [32m+[0m[0m min_special = 0
+      [32m+[0m[0m min_upper   = 0
+      [32m+[0m[0m number      = true
+      [32m+[0m[0m numeric     = true
+      [32m+[0m[0m result      = (known after apply)
+      [32m+[0m[0m special     = false
+      [32m+[0m[0m upper       = false
+    }
+
+[1m  # module.comprehend.aws_comprehend_document_classifier.classifier[0m will be created
+[0m  [32m+[0m[0m resource "aws_comprehend_document_classifier" "classifier" {
+      [32m+[0m[0m arn                  = (known after apply)
+      [32m+[0m[0m data_access_role_arn = (known after apply)
+      [32m+[0m[0m id                   = (known after apply)
+      [32m+[0m[0m language_code        = "en"
+      [32m+[0m[0m mode                 = "MULTI_CLASS"
+      [32m+[0m[0m name                 = (known after apply)
+      [32m+[0m[0m region               = "us-east-1"
+      [32m+[0m[0m tags_all             = (known after apply)
+      [32m+[0m[0m version_name         = (known after apply)
+      [32m+[0m[0m version_name_prefix  = (known after apply)
+
+      [32m+[0m[0m input_data_config {
+          [32m+[0m[0m data_format     = "COMPREHEND_CSV"
+          [32m+[0m[0m label_delimiter = (known after apply)
+          [32m+[0m[0m s3_uri          = (known after apply)
+        }
+
+      [32m+[0m[0m output_data_config (known after apply)
+    }
+
+[1m  # module.comprehend.aws_iam_policy.comprehend_policy[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_policy" "comprehend_policy" {
+      [32m+[0m[0m arn              = (known after apply)
+      [32m+[0m[0m attachment_count = (known after apply)
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m name             = (known after apply)
+      [32m+[0m[0m name_prefix      = (known after apply)
+      [32m+[0m[0m path             = "/"
+      [32m+[0m[0m policy           = jsonencode(
+            {
+              [32m+[0m[0m Statement = []
+              [32m+[0m[0m Version   = "2012-10-17"
+            }
+        )
+      [32m+[0m[0m policy_id        = (known after apply)
+      [32m+[0m[0m tags_all         = (known after apply)
+    }
+
+[1m  # module.comprehend.aws_iam_role.comprehend_role[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role" "comprehend_role" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m assume_role_policy    = jsonencode(
+            {
+              [32m+[0m[0m Statement = [
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = "sts:AssumeRole"
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Principal = {
+                          [32m+[0m[0m Service = "codepipeline.amazonaws.com"
+                        }
+                    },
+                ]
+              [32m+[0m[0m Version   = "2012-10-17"
+            }
+        )
+      [32m+[0m[0m create_date           = (known after apply)
+      [32m+[0m[0m force_detach_policies = false
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m managed_policy_arns   = (known after apply)
+      [32m+[0m[0m max_session_duration  = 3600
+      [32m+[0m[0m name                  = (known after apply)
+      [32m+[0m[0m name_prefix           = (known after apply)
+      [32m+[0m[0m path                  = "/"
+      [32m+[0m[0m tags_all              = (known after apply)
+      [32m+[0m[0m unique_id             = (known after apply)
+
+      [32m+[0m[0m inline_policy (known after apply)
+    }
+
+[1m  # module.comprehend.aws_iam_role_policy_attachment.attach_comprehend_policy[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "attach_comprehend_policy" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = (known after apply)
+      [32m+[0m[0m role       = (known after apply)
+    }
+
+[1m  # module.comprehend.aws_iam_role_policy_attachment.comprehend_data_access[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "comprehend_data_access" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/service-role/ComprehendDataAccessRolePolicy"
+      [32m+[0m[0m role       = (known after apply)
+    }
+
+[1m  # module.comprehend.aws_iam_role_policy_attachment.comprehend_full_access[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "comprehend_full_access" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/ComprehendFullAccess"
+      [32m+[0m[0m role       = (known after apply)
+    }
+
+[1m  # module.s3.aws_s3_bucket.samples[0m will be created
+[0m  [32m+[0m[0m resource "aws_s3_bucket" "samples" {
+      [32m+[0m[0m acceleration_status         = (known after apply)
+      [32m+[0m[0m acl                         = (known after apply)
+      [32m+[0m[0m arn                         = (known after apply)
+      [32m+[0m[0m bucket                      = (known after apply)
+      [32m+[0m[0m bucket_domain_name          = (known after apply)
+      [32m+[0m[0m bucket_prefix               = (known after apply)
+      [32m+[0m[0m bucket_region               = (known after apply)
+      [32m+[0m[0m bucket_regional_domain_name = (known after apply)
+      [32m+[0m[0m force_destroy               = true
+      [32m+[0m[0m hosted_zone_id              = (known after apply)
+      [32m+[0m[0m id                          = (known after apply)
+      [32m+[0m[0m object_lock_enabled         = (known after apply)
+      [32m+[0m[0m policy                      = (known after apply)
+      [32m+[0m[0m region                      = "us-east-1"
+      [32m+[0m[0m request_payer               = (known after apply)
+      [32m+[0m[0m tags_all                    = (known after apply)
+      [32m+[0m[0m website_domain              = (known after apply)
+      [32m+[0m[0m website_endpoint            = (known after apply)
+
+      [32m+[0m[0m cors_rule (known after apply)
+
+      [32m+[0m[0m grant (known after apply)
+
+      [32m+[0m[0m lifecycle_rule (known after apply)
+
+      [32m+[0m[0m logging (known after apply)
+
+      [32m+[0m[0m object_lock_configuration (known after apply)
+
+      [32m+[0m[0m replication_configuration (known after apply)
+
+      [32m+[0m[0m server_side_encryption_configuration (known after apply)
+
+      [32m+[0m[0m versioning (known after apply)
+
+      [32m+[0m[0m website (known after apply)
+    }
+
+[1m  # module.s3.aws_s3_object.sample_object[0m will be created
+[0m  [32m+[0m[0m resource "aws_s3_object" "sample_object" {
+      [32m+[0m[0m acl                    = (known after apply)
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m bucket                 = (known after apply)
+      [32m+[0m[0m bucket_key_enabled     = (known after apply)
+      [32m+[0m[0m checksum_crc32         = (known after apply)
+      [32m+[0m[0m checksum_crc32c        = (known after apply)
+      [32m+[0m[0m checksum_crc64nvme     = (known after apply)
+      [32m+[0m[0m checksum_sha1          = (known after apply)
+      [32m+[0m[0m checksum_sha256        = (known after apply)
+      [32m+[0m[0m content_type           = (known after apply)
+      [32m+[0m[0m etag                   = (known after apply)
+      [32m+[0m[0m force_destroy          = true
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m key                    = (known after apply)
+      [32m+[0m[0m kms_key_id             = (known after apply)
+      [32m+[0m[0m region                 = "us-east-1"
+      [32m+[0m[0m server_side_encryption = (known after apply)
+      [32m+[0m[0m source                 = "./Train.csv"
+      [32m+[0m[0m storage_class          = (known after apply)
+      [32m+[0m[0m tags_all               = (known after apply)
+      [32m+[0m[0m version_id             = (known after apply)
+    }
+
+[1mPlan:[0m 9 to add, 0 to change, 0 to destroy.
+[0m[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
