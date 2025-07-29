@@ -5,7 +5,7 @@ terraform deploying AWS Comprehend and additional related infrastructure
 INSTRUCTIONS
 ------------------
 
-cd aws-capstone/app/
+cd aws-comprehend/app/
 
 terraform init
 
