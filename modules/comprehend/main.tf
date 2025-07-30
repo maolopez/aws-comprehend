@@ -25,11 +25,6 @@ resource "aws_iam_role_policy_attachment" "comprehend_full_access" {
   policy_arn = "arn:aws:iam::aws:policy/ComprehendFullAccess"
 }
 
-resource "aws_iam_role_policy_attachment" "comprehend_data_access" {
-  role       = aws_iam_role.comprehend_role.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/ComprehendDataAccessRolePolicy"
-}
-
 resource "aws_iam_policy" "comprehend_policy" {
   name   = var.comprehend_policy
   policy = file("../modules/comprehend/comprehend_policy.json")
