@@ -20,7 +20,12 @@ df = df.dropna(subset=['label'])
 # Drop rows where the length of 'text' is over 5000 characters
 df = df[df['text'].apply(lambda x: len(str(x)) <= 5000)]
 
+# Select the 1000 most frequent unique labels
+top_labels = df['label'].value_counts().index[:1000]
+df = df[df['label'].isin(top_labels)]
+
+# Reorder columns to put label first
+df = df[['label', 'text']]
+
 # Save the updated CSV file with quoting to allow special characters
-with open('updated_yourfile.csv', 'w') as f:
-    f.write('"text","label"\n')
-df.to_csv('updated_yourfile.csv', mode='a', index=False, quoting=1, header=False)
+df.to_csv('updated_yourfile.csv', index=False, quoting=1, header=False)

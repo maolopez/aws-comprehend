@@ -12,3 +12,5 @@ Maximum dataset size: varies depending on the job
 Document size limit: 10 KB for custom classification jobs
 By following these steps and being mindful of Amazon Comprehend's quotas, you should be able to resolve the error and successfully train your model.
 ---
+Found 22820 unique labels. The maximum allowed number of unique labels is 1000., exit code: 1
+---

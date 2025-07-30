@@ -5,7 +5,7 @@ Drop your training data in app/Train.csv . Also, READ app/list_of_errors.txt
 
 Amazon Comprehend requires the CSV file to be in a specific format for document classification:
 
-The first row should contain the column headers, which in this case are "text" and "label".
+The CSV file should not have a header row. However, the model is "text", "label" or viceversa.
 
 Each subsequent row should contain a single document (text) and its corresponding label.
 
