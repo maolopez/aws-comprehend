@@ -1,6 +1,8 @@
 # aws-comprehend
 terraform deploying AWS Comprehend and additional related infrastructure
 
+Drop your training data in app/Train.csv . Also, READ app/list_of_errors.txt
+
 
 INSTRUCTIONS
 ------------------
@@ -11,7 +13,7 @@ terraform init
 
 terraform validate
 
-terraform plan
+terraform plan  #More info in app/terraform_plan.txt
 
 terraform apply auto-approve
 

@@ -1,5 +1,6 @@
 ---
-The error message indicates that one of your labels exceeds the maximum size limit of 5000 characters in Amazon Comprehend. To resolve this issue, review the label on line 17 of your file "samples-xuvk7" and ensure it adheres to the character limit. Here are some steps to help you fix the problem ¹:
+The error message indicates that one of your labels exceeds the maximum size limit of 5000 characters in Amazon Comprehend. To resolve this issue, review the 
+label on line 17 of your file "samples-xuvk7" and ensure it adheres to the character limit. Here are some steps to help you fix the problem ¹:
 Check the label length: Inspect the label on line 17 and determine if it's necessary to have such a long label. Consider shortening it if possible.
 Shorten the label: If the label is too long, try to condense it while still maintaining its meaning. This will ensure it fits within the 5000 character limit.
 Validate your dataset: After modifying the label, re-validate your dataset to ensure all labels comply with the size restrictions.
