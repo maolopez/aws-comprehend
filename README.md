@@ -1,6 +1,16 @@
 # aws-comprehend
 terraform deploying AWS Comprehend and additional related infrastructure
 
+Drop your training data in app/Train.csv . Also, READ app/list_of_errors.txt
+
+Amazon Comprehend requires the CSV file to be in a specific format for document classification:
+
+The CSV file should not have a header row. However, the model is "text", "label" or viceversa.
+
+Each subsequent row should contain a single document (text) and its corresponding label.
+
+The labels should be mutually exclusive, meaning each document can only have one label.
+
 
 INSTRUCTIONS
 ------------------
@@ -11,7 +21,7 @@ terraform init
 
 terraform validate
 
-terraform plan
+terraform plan  #More info in app/terraform_plan.txt
 
 terraform apply auto-approve
 
