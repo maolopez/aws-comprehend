@@ -16,6 +16,47 @@ terraform plan
 terraform apply auto-approve
 
 
+EXPECTATIONS
+------------------
+
+You can view the infrastructure created by Terraform in the AWS Management Console. Here are the specific locations to check for each resource:
+
+
+S3 Bucket:
+
+Navigate to the S3 dashboard: https://s3.console.aws.amazon.com/s3/
+Look for the bucket name you specified in your Terraform configuration.
+
+
+Comprehend Document Classifier:
+
+Navigate to the Amazon Comprehend dashboard: https://console.aws.amazon.com/comprehend/
+
+Click on "Custom classification" in the left-hand menu.
+Look for the classifier name you specified in your Terraform configuration.
+
+
+IAM Role:
+
+Navigate to the IAM dashboard: https://console.aws.amazon.com/iam/
+Click on "Roles" in the left-hand menu.
+
+Look for the role name you specified in your Terraform configuration.
+By checking these locations, you should be able to see the infrastructure created by Terraform.
+
+
+Additionally, you can also use the AWS CLI to list the resources created by Terraform. For example, you can use the following commands:
+
+aws s3 ls to list S3 buckets
+
+aws comprehend list-document-classifiers to list Comprehend document classifiers
+
+aws iam list-roles to list IAM roles
+
+
+Make sure to replace the resource names and IDs with the actual values specified in your Terraform configuration.
+
+
 REFERENCES
 ------------------
 
